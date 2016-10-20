@@ -7,8 +7,7 @@ namespace LEARNING_MVC.Controllers
 	//[System.Web.Mvc.Authorize(Roles = "Supervisor,Manager")]
 	public class HomeController : System.Web.Mvc.Controller
 	{
-		public HomeController()
-			: base()
+		public HomeController() : base()
 		{
 		}
 
@@ -48,7 +47,7 @@ namespace LEARNING_MVC.Controllers
 		/// http://localhost:30847/Home/Learn1030/15 -> Error!
 		/// http://localhost:30847/Home/Learn1030?firstNumber=15 -> Error!
 		/// http://localhost:30847/Home/Learn1030?firstNumber=15&secondNumber=20
-		/// http://localhost:30847/Home/Learn1030?secondNumber=20&firstNumber=15 -> Note: The ordering is not important!
+		/// http://localhost:30847/Home/Learn1030?secondNumber=20&firstNumber=15 -> Note: The parameters ordering is not important!
 		/// </summary>
 		public void Learn1030(int firstNumber, int secondNumber)
 		{
@@ -58,9 +57,9 @@ namespace LEARNING_MVC.Controllers
 		/// <summary>
 		/// http://localhost:30847/Home/Learn1040 -> Error!
 		/// http://localhost:30847/Home/Learn1040/15 -> Error!
-		/// http://localhost:30847/Home/Learn1040/15?number=20 // شیک تر است
 		/// http://localhost:30847/Home/Learn1040?id=15&number=20
 		/// http://localhost:30847/Home/Learn1040?number=20&id=15
+		/// http://localhost:30847/Home/Learn1040/15?number=20 // شیک تر است
 		/// </summary>
 		public void Learn1040(int id, int number)
 		{
@@ -70,9 +69,9 @@ namespace LEARNING_MVC.Controllers
 		/// <summary>
 		/// http://localhost:30847/Home/Learn1050 -> Error!
 		/// http://localhost:30847/Home/Learn1050/15 -> Error!
-		/// http://localhost:30847/Home/Learn1050/15?number=20 // شیک تر است
 		/// http://localhost:30847/Home/Learn1050?id=15&number=20
 		/// http://localhost:30847/Home/Learn1050?number=20&id=15
+		/// http://localhost:30847/Home/Learn1050/15?number=20 // شیک تر است
 		/// </summary>
 		public void Learn1050(int number, int id)
 		{
@@ -101,8 +100,8 @@ namespace LEARNING_MVC.Controllers
 
 		/// <summary>
 		/// http://localhost:30847/Home/Learn1080 -> id = null
-		/// http://localhost:30847/Home/Learn1080/Something -> id = "Something" شيک تر است
 		/// http://localhost:30847/Home/Learn1080?id=Something -> id = "Something"
+		/// http://localhost:30847/Home/Learn1080/Something -> id = "Something" شيک تر است
 		/// </summary>
 		public void Learn1080(string id)
 		{
@@ -255,6 +254,34 @@ namespace LEARNING_MVC.Controllers
 
 			return (Content(strContent));
 		}
+
+		public System.Web.Mvc.ActionResult Learn1165(int? id)
+		{
+			if (id.HasValue == false)
+			{
+				return (Content("You should specify id value!"));
+			}
+
+			switch (id.Value)
+			{
+				case 1:
+				{
+					return (RedirectToAction(actionName: "Action1"));
+				}
+
+				case 2:
+				{
+					return (RedirectToAction(actionName: "Action2"));
+				}
+
+				default:
+				{
+					string strContent = "Id value is not valid!";
+
+					return (Content(strContent));
+				}
+			}
+		}
 		// **************************************************
 		// **************************************************
 		// **************************************************
@@ -346,24 +373,6 @@ namespace LEARNING_MVC.Controllers
 			if (TempData["MyNumber"] == null)
 			{
 				TempData["MyNumber"] = 10;
-			}
-			else
-			{
-				TempData["MyNumber"] =
-					(int)TempData["MyNumber"] + 1;
-			}
-
-			//TempData.Keep();
-			TempData.Keep("MyNumber");
-
-			return (Content(TempData["MyNumber"].ToString()));
-		}
-
-		public System.Web.Mvc.ContentResult Learn1210()
-		{
-			if (TempData["MyNumber"] == null)
-			{
-				TempData["MyNumber"] = 10;
 
 				//TempData.Keep();
 				TempData.Keep("MyNumber");
@@ -373,6 +382,24 @@ namespace LEARNING_MVC.Controllers
 				TempData["MyNumber"] =
 					(int)TempData["MyNumber"] + 1;
 			}
+
+			return (Content(TempData["MyNumber"].ToString()));
+		}
+
+		public System.Web.Mvc.ContentResult Learn1210()
+		{
+			if (TempData["MyNumber"] == null)
+			{
+				TempData["MyNumber"] = 10;
+			}
+			else
+			{
+				TempData["MyNumber"] =
+					(int)TempData["MyNumber"] + 1;
+			}
+
+			//TempData.Keep();
+			TempData.Keep("MyNumber");
 
 			return (Content(TempData["MyNumber"].ToString()));
 		}
@@ -482,7 +509,7 @@ namespace LEARNING_MVC.Controllers
 		}
 
 		[System.Web.Mvc.HttpGet]
-		[System.Web.Mvc.ActionName("Learn1280_AliasName")]
+		[System.Web.Mvc.ActionName(name: "Learn1280_AliasName")]
 		public System.Web.Mvc.ActionResult Learn1280(string name)
 		{
 			return (Content("[GET] Hello, World!"));

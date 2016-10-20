@@ -5,7 +5,7 @@ namespace LEARNING_MVC.Controllers
 {
 	public class AccountController : System.Web.Mvc.Controller
 	{
-		public AccountController()
+		public AccountController() : base()
 		{
 		}
 

@@ -2,7 +2,7 @@
 {
 	public class Person : System.Object
 	{
-		public Person()
+		public Person() : base()
 		{
 		}
 

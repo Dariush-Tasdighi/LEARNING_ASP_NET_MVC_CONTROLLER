@@ -2,11 +2,10 @@
 namespace Models
 {
 	//public class SomeClass
-	//public class SomeClass : object
-	public class SomeClass : System.Object
+	//public class SomeClass : System.Object
+	public class SomeClass : object
 	{
-		public SomeClass()
-			: base()
+		public SomeClass() : base()
 		{
 		}
 
