@@ -7,8 +7,7 @@ namespace LEARNING_MVC.Controllers
 	//[System.Web.Mvc.Authorize(Roles = "Supervisor,Manager")]
 	public class HomeController : System.Web.Mvc.Controller
 	{
-		public HomeController()
-			: base()
+		public HomeController() : base()
 		{
 		}
 
