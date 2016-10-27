@@ -7,7 +7,8 @@ namespace LEARNING_MVC.Controllers
 	//[System.Web.Mvc.Authorize(Roles = "Supervisor,Manager")]
 	public class HomeController : System.Web.Mvc.Controller
 	{
-		public HomeController() : base()
+		public HomeController()
+			: base()
 		{
 		}
 
@@ -634,6 +635,12 @@ namespace LEARNING_MVC.Controllers
 		{
 			return (Content("Hello, World!"));
 		}
+
+		[System.Web.Mvc.AllowAnonymous]
+		public System.Web.Mvc.ContentResult Learn1390()
+		{
+			return (Content("Hello, World!"));
+		}
 		// **************************************************
 		// **************************************************
 		// **************************************************
@@ -642,7 +649,7 @@ namespace LEARNING_MVC.Controllers
 		// **************************************************
 		// **************************************************
 		[System.Web.Mvc.HttpGet]
-		public string Learn1390()
+		public string Learn1400()
 		{
 			string strResult =
 				"{\"FullName\":\"Dariush Tasdighi\",\"Age\":40}";
@@ -655,7 +662,7 @@ namespace LEARNING_MVC.Controllers
 		}
 
 		[System.Web.Mvc.HttpGet]
-		public System.Web.Mvc.JsonResult Learn1400()
+		public System.Web.Mvc.JsonResult Learn1410()
 		{
 			Models.Person oPerson = new Models.Person();
 
@@ -667,7 +674,7 @@ namespace LEARNING_MVC.Controllers
 		}
 
 		[System.Web.Mvc.HttpGet]
-		public System.Web.Mvc.JsonResult Learn1410()
+		public System.Web.Mvc.JsonResult Learn1420()
 		{
 			return (Json(data: new { FullName = "Dariush Tasdighi", Age = 40 },
 				behavior: System.Web.Mvc.JsonRequestBehavior.AllowGet));
@@ -680,20 +687,6 @@ namespace LEARNING_MVC.Controllers
 		// **************************************************
 		// **************************************************
 		[System.Web.Mvc.HttpGet]
-		public System.Web.Mvc.FileResult Learn1420()
-		{
-			// شرايط دريافت فايل
-
-			string strRootRelativePathName =
-				"~/App_Data/Images/Dariush.jpg";
-
-			string strPathName =
-				Server.MapPath(strRootRelativePathName);
-
-			return (File(strPathName, contentType: "text/html"));
-		}
-
-		[System.Web.Mvc.HttpGet]
 		public System.Web.Mvc.FileResult Learn1430()
 		{
 			// شرايط دريافت فايل
@@ -704,7 +697,7 @@ namespace LEARNING_MVC.Controllers
 			string strPathName =
 				Server.MapPath(strRootRelativePathName);
 
-			return (File(strPathName, contentType: "image/jpeg"));
+			return (File(fileName: strPathName, contentType: "text/html"));
 		}
 
 		[System.Web.Mvc.HttpGet]
@@ -718,8 +711,7 @@ namespace LEARNING_MVC.Controllers
 			string strPathName =
 				Server.MapPath(strRootRelativePathName);
 
-			return (File(strPathName, contentType: "googooli/magooli"));
-			//return (File(strPathName, contentType: "application/octet-stream"));
+			return (File(fileName: strPathName, contentType: "image/jpeg"));
 		}
 
 		[System.Web.Mvc.HttpGet]
@@ -733,7 +725,22 @@ namespace LEARNING_MVC.Controllers
 			string strPathName =
 				Server.MapPath(strRootRelativePathName);
 
-			return (File(strPathName, contentType: "googooli/magooli", fileDownloadName: "Dariush.jpg"));
+			return (File(fileName: strPathName, contentType: "googooli/magooli"));
+			//return (File(fileName: strPathName, contentType: "application/octet-stream"));
+		}
+
+		[System.Web.Mvc.HttpGet]
+		public System.Web.Mvc.FileResult Learn1460()
+		{
+			// شرايط دريافت فايل
+
+			string strRootRelativePathName =
+				"~/App_Data/Images/Dariush.jpg";
+
+			string strPathName =
+				Server.MapPath(strRootRelativePathName);
+
+			return (File(fileName: strPathName, contentType: "googooli/magooli", fileDownloadName: "Dariush.jpg"));
 		}
 
 		/// <summary>
