@@ -35,7 +35,7 @@ namespace LEARNING_MVC.Controllers
 		/// http://localhost:30847/Home/Learn1020 -> Error!
 		/// http://localhost:30847/Home/Learn1020/15 -> Error!
 		/// http://localhost:30847/Home/Learn1020?number=15
-		/// http://localhost:30847/HOME/LEARN1020?NUMBER=15 -> Note: Url and the parameter names are not Case Sensitive!
+		/// http://localhost:30847/HOME/LEARN1020?NUMBER=15 -> Note: Url (Controller and Action name) and the input parameter name(s) are not Case Sensitive!
 		/// </summary>
 		public void Learn1020(int number)
 		{
@@ -112,6 +112,7 @@ namespace LEARNING_MVC.Controllers
 		/// http://localhost:30847/Home/Learn1090 -> number = 110
 		/// http://localhost:30847/Home/Learn1090/200 -> number = 110
 		/// http://localhost:30847/Home/Learn1090?number=200 -> number = 200
+		/// http://localhost:30847/Home/Learn1090?number=Something -> Error!
 		/// </summary>
 		public void Learn1090(int number = 110)
 		{
@@ -184,7 +185,7 @@ namespace LEARNING_MVC.Controllers
 
 		public System.Web.Mvc.ContentResult Learn1150()
 		{
-			// می‌خواهيم اثر تگ را کاملا خنثی کنيم
+			// می‌خواهيم اثر تگها را کاملا خنثی نماییم
 			string strContent =
 				Server.HtmlEncode("<b>Hello, World!</b>");
 
@@ -257,6 +258,8 @@ namespace LEARNING_MVC.Controllers
 
 		public System.Web.Mvc.ActionResult Learn1165(int? id)
 		{
+			//if(id == null)
+			//if (!id.HasValue)
 			if (id.HasValue == false)
 			{
 				return (Content("You should specify id value!"));
