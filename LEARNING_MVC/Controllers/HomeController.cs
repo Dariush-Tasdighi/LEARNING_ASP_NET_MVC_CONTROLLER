@@ -546,6 +546,24 @@ namespace LEARNING_MVC.Controllers
 		// **************************************************
 		// **************************************************
 		[System.Web.Mvc.HttpGet]
+		public System.Web.Mvc.RedirectResult AboutUs()
+		{
+			return (RedirectPermanent(url: "About"));
+		}
+
+		[System.Web.Mvc.HttpGet]
+		public System.Web.Mvc.ContentResult About()
+		{
+			return (Content("Hi! I'm Dariush Tasdighi!"));
+		}
+		// **************************************************
+		// **************************************************
+		// **************************************************
+
+		// **************************************************
+		// **************************************************
+		// **************************************************
+		[System.Web.Mvc.HttpGet]
 		public System.Web.Mvc.ContentResult Learn1310()
 		{
 			string strContent =
@@ -618,6 +636,8 @@ namespace LEARNING_MVC.Controllers
 		// **************************************************
 		// **************************************************
 		// **************************************************
+		// AZMan
+		// Identity
 		[System.Web.Mvc.HttpGet]
 		public System.Web.Mvc.ContentResult Learn1360()
 		{
@@ -699,6 +719,7 @@ namespace LEARNING_MVC.Controllers
 			string strPathName =
 				Server.MapPath(strRootRelativePathName);
 
+			// Content Type == Mime Type
 			return (File(fileName: strPathName, contentType: "text/html"));
 		}
 
