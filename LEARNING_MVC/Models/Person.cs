@@ -1,6 +1,6 @@
 ﻿namespace Models
 {
-	public class Person : System.Object
+	public class Person : object
 	{
 		public Person() : base()
 		{

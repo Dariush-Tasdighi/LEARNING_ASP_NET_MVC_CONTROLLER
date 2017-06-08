@@ -256,7 +256,11 @@ namespace LEARNING_MVC.Controllers
 			return (Content(strContent));
 		}
 
-		public System.Web.Mvc.ActionResult Learn1165(int? id)
+		//public System.Web.Mvc.ActionResult Edit(int id)
+		//{
+		//}
+
+		public System.Web.Mvc.ActionResult Edit(int? id)
 		{
 			//if(id == null)
 			//if (!id.HasValue)
@@ -519,6 +523,10 @@ namespace LEARNING_MVC.Controllers
 		}
 		// **************************************************
 		// **************************************************
+		// **************************************************
+
+		// **************************************************
+		// Note: باشد GET نمود که RedirectToAction ی Action در صورتی می‌توان به
 		// **************************************************
 
 		// **************************************************
