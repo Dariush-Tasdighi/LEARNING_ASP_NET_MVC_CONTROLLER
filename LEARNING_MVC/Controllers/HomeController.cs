@@ -203,42 +203,42 @@ namespace LEARNING_MVC.Controllers
 			switch (id)
 			{
 				case 1:
-				{
-					// Old Solution
-					//Response.Redirect("~/Home/Action1", endResponse: false);
-					//return (null);
-					// /Old Solution
+					{
+						// Old Solution
+						//Response.Redirect("~/Home/Action1", endResponse: false);
+						//return (null);
+						// /Old Solution
 
-					// New Solution (1)
-					//return (RedirectToAction("Action1"));
-					// /New Solution (1)
+						// New Solution (1)
+						//return (RedirectToAction("Action1"));
+						// /New Solution (1)
 
-					// New Solution (2)
-					return (RedirectToAction(actionName: "Action1"));
-					// /New Solution (2)
-				}
+						// New Solution (2)
+						return (RedirectToAction(actionName: "Action1"));
+						// /New Solution (2)
+					}
 
 				case 2:
-				{
-					// ی در همين کنترلر برويم Action اگر بخواهيم به
-					//return (RedirectToAction(actionName: "Action2"));
+					{
+						// ی در همين کنترلر برويم Action اگر بخواهيم به
+						//return (RedirectToAction(actionName: "Action2"));
 
-					// Solution (1)
-					// ی در کنترلر ديگری برويم Action اگر بخواهيم به
-					//return (RedirectToAction(actionName: "Action2", controllerName: "Home"));
-					// /Solution (1)
+						// Solution (1)
+						// ی در کنترلر ديگری برويم Action اگر بخواهيم به
+						//return (RedirectToAction(actionName: "Action2", controllerName: "Home"));
+						// /Solution (1)
 
-					// Solution (2)
-					return (RedirectToAction(controllerName: "Home", actionName: "Action2"));
-					// /Solution (2)
-				}
+						// Solution (2)
+						return (RedirectToAction(controllerName: "Home", actionName: "Action2"));
+						// /Solution (2)
+					}
 
 				default:
-				{
-					string strContent = "Id value is not valid!";
+					{
+						string strContent = "Id value is not valid!";
 
-					return (Content(strContent));
-				}
+						return (Content(strContent));
+					}
 			}
 		}
 
@@ -258,6 +258,7 @@ namespace LEARNING_MVC.Controllers
 
 		//public System.Web.Mvc.ActionResult Edit(int id)
 		//{
+		//	return (Content("We display the edit page!"));
 		//}
 
 		public System.Web.Mvc.ActionResult Edit(int? id)
@@ -269,25 +270,7 @@ namespace LEARNING_MVC.Controllers
 				return (Content("You should specify id value!"));
 			}
 
-			switch (id.Value)
-			{
-				case 1:
-				{
-					return (RedirectToAction(actionName: "Action1"));
-				}
-
-				case 2:
-				{
-					return (RedirectToAction(actionName: "Action2"));
-				}
-
-				default:
-				{
-					string strContent = "Id value is not valid!";
-
-					return (Content(strContent));
-				}
-			}
+			return (Content("We display the edit page!"));
 		}
 		// **************************************************
 		// **************************************************
@@ -317,9 +300,14 @@ namespace LEARNING_MVC.Controllers
 			// /Solution (1)
 
 			// Solution (2)
-			return (RedirectToAction(actionName: "Action3",
-				routeValues: new { FirstNumber = 10, SecondNumber = 20 }));
+			//return (RedirectToAction(actionName: "Action3",
+			//	routeValues: new { FirstNumber = 10, SecondNumber = 20 }));
 			// /Solution (2)
+
+			// Solution (3)
+			return (RedirectToAction(actionName: "Action3",
+				routeValues: new { SecondNumber = 20, FirstNumber = 10 }));
+			// /Solution (3)
 		}
 		// **************************************************
 		// **************************************************
@@ -600,24 +588,24 @@ namespace LEARNING_MVC.Controllers
 			switch (id)
 			{
 				case 1:
-				{
-					return (Content("Hello World (1)!"));
-				}
+					{
+						return (Content("Hello World (1)!"));
+					}
 
 				case 2:
-				{
-					return (Content("Hello World (2)!"));
-				}
+					{
+						return (Content("Hello World (2)!"));
+					}
 
 				default:
-				{
-					return (Content("Hello, World!"));
-				}
+					{
+						return (Content("Hello, World!"));
+					}
 			}
 		}
 
 		[System.Web.Mvc.HttpGet]
-		[System.Web.Mvc.OutputCache(Duration = 120)]
+		[System.Web.Mvc.OutputCache(Duration = 600)]
 		public System.Web.Mvc.ContentResult Learn1340()
 		{
 			string strContent =
