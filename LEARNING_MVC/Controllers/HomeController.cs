@@ -1,7 +1,4 @@
-﻿using System.Linq;
-//using System.Data.Entity;
-
-namespace LEARNING_MVC.Controllers
+﻿namespace LEARNING_MVC.Controllers
 {
 	//[System.Web.Mvc.Authorize]
 	//[System.Web.Mvc.Authorize(Roles = "Supervisor,Manager")]
@@ -186,10 +183,10 @@ namespace LEARNING_MVC.Controllers
 		public System.Web.Mvc.ContentResult Learn1150()
 		{
 			// می‌خواهيم اثر تگها را کاملا خنثی نماییم
-			string strContent =
+			string content =
 				Server.HtmlEncode("<b>Hello, World!</b>");
 
-			return (Content(strContent));
+			return (Content(content));
 		}
 		// **************************************************
 		// **************************************************
@@ -203,59 +200,62 @@ namespace LEARNING_MVC.Controllers
 			switch (id)
 			{
 				case 1:
-					{
-						// Old Solution
-						//Response.Redirect("~/Home/Action1", endResponse: false);
-						//return (null);
-						// /Old Solution
+				{
+					// Old Solution
+					//Response.Redirect("~/Home/Action1", endResponse: false);
+					//return (null);
+					// /Old Solution
 
-						// New Solution (1)
-						//return (RedirectToAction("Action1"));
-						// /New Solution (1)
+					// New Solution (1)
+					//return (RedirectToAction("Action1"));
+					// /New Solution (1)
 
-						// New Solution (2)
-						return (RedirectToAction(actionName: "Action1"));
-						// /New Solution (2)
-					}
+					// New Solution (2)
+					return (RedirectToAction(actionName: "Action1"));
+					// /New Solution (2)
+				}
 
 				case 2:
-					{
-						// ی در همين کنترلر برويم Action اگر بخواهيم به
-						//return (RedirectToAction(actionName: "Action2"));
+				{
+					// ی در همين کنترلر برويم Action اگر بخواهيم به
+					//return (RedirectToAction(actionName: "Action2"));
 
-						// Solution (1)
-						// ی در کنترلر ديگری برويم Action اگر بخواهيم به
-						//return (RedirectToAction(actionName: "Action2", controllerName: "Home"));
-						// /Solution (1)
+					// Solution (1)
+					// ی در کنترلر ديگری برويم Action اگر بخواهيم به
+					//return (RedirectToAction(actionName: "Action2", controllerName: "Home"));
+					// /Solution (1)
 
-						// Solution (2)
-						return (RedirectToAction(controllerName: "Home", actionName: "Action2"));
-						// /Solution (2)
-					}
+					// Solution (2)
+					return (RedirectToAction(controllerName: "Home", actionName: "Action2"));
+					// /Solution (2)
+				}
 
 				default:
-					{
-						string strContent = "Id value is not valid!";
+				{
+					string content = "Id value is not valid!";
 
-						return (Content(strContent));
-					}
+					return (Content(content));
+				}
 			}
 		}
 
 		public System.Web.Mvc.ContentResult Action1()
 		{
-			string strContent = "Action (1)";
+			string content = "Action (1)";
 
-			return (Content(strContent));
+			return (Content(content));
 		}
 
 		public System.Web.Mvc.ContentResult Action2()
 		{
-			string strContent = "Action (2)";
+			string content = "Action (2)";
 
-			return (Content(strContent));
+			return (Content(content));
 		}
 
+		/// <summary>
+		/// یک موضوع فلسفی در تفکر جدید مایکروسافت
+		/// </summary>
 		//public System.Web.Mvc.ActionResult Edit(int id)
 		//{
 		//	return (Content("We display the edit page!"));
@@ -263,7 +263,7 @@ namespace LEARNING_MVC.Controllers
 
 		public System.Web.Mvc.ActionResult Edit(int? id)
 		{
-			//if(id == null)
+			//if (id == null)
 			//if (!id.HasValue)
 			if (id.HasValue == false)
 			{
@@ -281,22 +281,25 @@ namespace LEARNING_MVC.Controllers
 		// **************************************************
 		public System.Web.Mvc.ContentResult Action3(int firstNumber, int secondNumber)
 		{
-			string strResult =
-				string.Format("Frist Number: {0}, Second Number: {1}",
-				firstNumber, secondNumber);
+			//string result =
+			//	string.Format("Frist Number: {0}, Second Number: {1}",
+			//	firstNumber, secondNumber);
 
-			return (Content(strResult));
+			string result =
+				$"Frist Number: { firstNumber }, Second Number: { secondNumber}";
+
+			return (Content(result));
 		}
 
 		public System.Web.Mvc.RedirectToRouteResult Learn1170()
 		{
 			// Solution (1)
-			//Models.SomeClass oSomeClass = new Models.SomeClass();
+			//Models.SomeClass someClass = new Models.SomeClass();
 
-			//oSomeClass.FirstNumber = 10;
-			//oSomeClass.SecondNumber = 20;
+			//someClass.FirstNumber = 10;
+			//someClass.SecondNumber = 20;
 
-			//return (RedirectToAction(actionName: "Action3", routeValues: oSomeClass));
+			//return (RedirectToAction(actionName: "Action3", routeValues: someClass));
 			// /Solution (1)
 
 			// Solution (2)
@@ -325,27 +328,27 @@ namespace LEARNING_MVC.Controllers
 
 		public System.Web.Mvc.ContentResult Action4()
 		{
-			string strResult = string.Empty;
+			string result = string.Empty;
 
 			if (TempData["MyNumber"] != null)
 			{
-				int intMyNumber =
+				int myNumber =
 					System.Convert.ToInt32(TempData["MyNumber"]);
 
-				strResult =
-					string.Format("My Number is {0}", intMyNumber);
+				result =
+					$"My Number is { myNumber }";
 			}
 
 			if (TempData["MyName"] != null)
 			{
-				string strMyName =
+				string myName =
 					TempData["MyName"].ToString();
 
-				strResult =
-					string.Format("My Name is {0}", strMyName);
+				result =
+					$"My Name is { myName }";
 			}
 
-			return (Content(strResult));
+			return (Content(result));
 		}
 
 		public System.Web.Mvc.ContentResult Learn1190()
@@ -588,19 +591,19 @@ namespace LEARNING_MVC.Controllers
 			switch (id)
 			{
 				case 1:
-					{
-						return (Content("Hello World (1)!"));
-					}
+				{
+					return (Content("Hello World (1)!"));
+				}
 
 				case 2:
-					{
-						return (Content("Hello World (2)!"));
-					}
+				{
+					return (Content("Hello World (2)!"));
+				}
 
 				default:
-					{
-						return (Content("Hello, World!"));
-					}
+				{
+					return (Content("Hello, World!"));
+				}
 			}
 		}
 
