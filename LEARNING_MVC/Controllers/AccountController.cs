@@ -1,7 +1,4 @@
-﻿using System.Linq;
-//using System.Data.Entity;
-
-namespace LEARNING_MVC.Controllers
+﻿namespace LEARNING_MVC.Controllers
 {
 	public class AccountController : System.Web.Mvc.Controller
 	{

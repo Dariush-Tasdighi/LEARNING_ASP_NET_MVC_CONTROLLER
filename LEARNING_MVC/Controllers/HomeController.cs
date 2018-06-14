@@ -405,6 +405,8 @@
 		// **************************************************
 		// **************************************************
 
+		// Check POST Actions by PostMan Application!
+
 		// **************************************************
 		// **************************************************
 		// **************************************************
@@ -565,10 +567,10 @@
 		[System.Web.Mvc.HttpGet]
 		public System.Web.Mvc.ContentResult Learn1310()
 		{
-			string strContent =
+			string content =
 				System.DateTime.Now.ToString("yyyy/MM/dd - HH:mm:ss");
 
-			return (Content(strContent));
+			return (Content(content));
 		}
 
 		/// <remarks>
@@ -578,14 +580,14 @@
 		[System.Web.Mvc.OutputCache(Duration = 10)]
 		public System.Web.Mvc.ContentResult Learn1320()
 		{
-			string strContent =
+			string content =
 				System.DateTime.Now.ToString("yyyy/MM/dd - HH:mm:ss");
 
-			return (Content(strContent));
+			return (Content(content));
 		}
 
 		[System.Web.Mvc.HttpGet]
-		[System.Web.Mvc.OutputCache(Duration = 120)]
+		[System.Web.Mvc.OutputCache(Duration = 600)]
 		public System.Web.Mvc.ContentResult Learn1330(int id)
 		{
 			switch (id)
@@ -611,10 +613,10 @@
 		[System.Web.Mvc.OutputCache(Duration = 600)]
 		public System.Web.Mvc.ContentResult Learn1340()
 		{
-			string strContent =
+			string content =
 				System.DateTime.Now.ToString("yyyy/MM/dd - HH:mm:ss");
 
-			return (Content(strContent));
+			return (Content(content));
 		}
 
 		/// <summary>
@@ -623,10 +625,10 @@
 		[System.Web.Mvc.HttpGet]
 		public void Learn1350()
 		{
-			string strUrl =
+			string url =
 				Url.Action(actionName: "Learn1340");
 
-			Response.RemoveOutputCacheItem(strUrl);
+			Response.RemoveOutputCacheItem(url);
 		}
 		// **************************************************
 		// **************************************************
@@ -672,32 +674,62 @@
 		[System.Web.Mvc.HttpGet]
 		public string Learn1400()
 		{
-			string strResult =
-				"{\"FullName\":\"Dariush Tasdighi\",\"Age\":40}";
+			string result =
+				"{\"FullName\":\"Dariush Tasdighi\",\"Age\":45}";
 
 			// Wrong Usage!
-			//string strResult =
-			//	"{'FullName':'Dariush Tasdighi','Age':40}";
+			//string result =
+			//	"{'FullName':'Dariush Tasdighi','Age':45}";
 
-			return (strResult);
+			return (result);
+		}
+
+		[System.Web.Mvc.HttpGet]
+		public System.Web.Mvc.ContentResult Learn1405()
+		{
+			string result =
+				"{\"FullName\":\"Dariush Tasdighi\",\"Age\":45}";
+
+			return (Content(result));
 		}
 
 		[System.Web.Mvc.HttpGet]
 		public System.Web.Mvc.JsonResult Learn1410()
 		{
-			Models.Person oPerson = new Models.Person();
+			Models.Person person = new Models.Person();
 
-			oPerson.Age = 40;
-			oPerson.FullName = "Dariush Tasdighi";
+			person.Age = 45;
+			person.FullName = "Dariush Tasdighi";
 
-			return (Json(data: oPerson,
+			return (Json(data: person,
 				behavior: System.Web.Mvc.JsonRequestBehavior.AllowGet));
 		}
 
 		[System.Web.Mvc.HttpGet]
 		public System.Web.Mvc.JsonResult Learn1420()
 		{
-			return (Json(data: new { FullName = "Dariush Tasdighi", Age = 40 },
+			var result =
+				new { FullName = "Dariush Tasdighi", Age = 40 };
+
+			return (Json(data: result,
+				behavior: System.Web.Mvc.JsonRequestBehavior.AllowGet));
+		}
+
+		[System.Web.Mvc.HttpGet]
+		public System.Web.Mvc.JsonResult Learn1425()
+		{
+			var result =
+				new System.Collections.ArrayList();
+
+			for (int index = 1; index <= 5; index++)
+			{
+				var entity =
+					new { FullName = $"Dariush Tasdighi {index}", Age = 40 + index };
+
+				result.Add(entity);
+			}
+
+			return (Json(data: result,
 				behavior: System.Web.Mvc.JsonRequestBehavior.AllowGet));
 		}
 		// **************************************************
@@ -712,14 +744,14 @@
 		{
 			// شرايط دريافت فايل
 
-			string strRootRelativePathName =
+			string rootRelativePathName =
 				"~/App_Data/Images/Dariush.jpg";
 
-			string strPathName =
-				Server.MapPath(strRootRelativePathName);
+			string pathName =
+				Server.MapPath(rootRelativePathName);
 
 			// Content Type == Mime Type
-			return (File(fileName: strPathName, contentType: "text/html"));
+			return (File(fileName: pathName, contentType: "text/html"));
 		}
 
 		[System.Web.Mvc.HttpGet]
@@ -727,13 +759,13 @@
 		{
 			// شرايط دريافت فايل
 
-			string strRootRelativePathName =
+			string rootRelativePathName =
 				"~/App_Data/Images/Dariush.jpg";
 
-			string strPathName =
-				Server.MapPath(strRootRelativePathName);
+			string pathName =
+				Server.MapPath(rootRelativePathName);
 
-			return (File(fileName: strPathName, contentType: "image/jpeg"));
+			return (File(fileName: pathName, contentType: "image/jpeg"));
 		}
 
 		[System.Web.Mvc.HttpGet]
@@ -741,11 +773,11 @@
 		{
 			// شرايط دريافت فايل
 
-			string strRootRelativePathName =
+			string rootRelativePathName =
 				"~/App_Data/Images/Dariush.jpg";
 
 			string strPathName =
-				Server.MapPath(strRootRelativePathName);
+				Server.MapPath(rootRelativePathName);
 
 			return (File(fileName: strPathName, contentType: "googooli/magooli"));
 			//return (File(fileName: strPathName, contentType: "application/octet-stream"));
@@ -756,13 +788,13 @@
 		{
 			// شرايط دريافت فايل
 
-			string strRootRelativePathName =
+			string rootRelativePathName =
 				"~/App_Data/Images/Dariush.jpg";
 
-			string strPathName =
-				Server.MapPath(strRootRelativePathName);
+			string pathName =
+				Server.MapPath(rootRelativePathName);
 
-			return (File(fileName: strPathName, contentType: "googooli/magooli", fileDownloadName: "Dariush.jpg"));
+			return (File(fileName: pathName, contentType: "googooli/magooli", fileDownloadName: "Dariush.jpg"));
 		}
 
 		/// <summary>
@@ -772,29 +804,29 @@
 		public void Download(int id)
 		{
 			// **************************************************
-			string strFileName =
+			string fileName =
 				string.Format("{0}.zip", id);
 
-			string strRootRelativePathName =
-				string.Format("~/App_Data/Files/{0}", strFileName);
+			string rootRelativePathName =
+				string.Format("~/App_Data/Files/{0}", fileName);
 
-			string strPathName =
-				Server.MapPath(strRootRelativePathName);
+			string pathName =
+				Server.MapPath(path: rootRelativePathName);
 
-			if (System.IO.File.Exists(strPathName) == false)
+			if (System.IO.File.Exists(pathName) == false)
 			{
 				return;
 			}
 			// **************************************************
 
-			System.IO.Stream oStream = null;
+			System.IO.Stream stream = null;
 
 			try
 			{
 				// Open the file
-				oStream =
+				stream =
 					new System.IO.FileStream
-						(path: strPathName,
+						(path: pathName,
 						mode: System.IO.FileMode.Open,
 						share: System.IO.FileShare.Read,
 						access: System.IO.FileAccess.Read);
@@ -808,20 +840,20 @@
 
 				// With setting the file name,
 				// in the saving dialog, user will see
-				// the [strFileName] name instead of [download]!
-				Response.AddHeader("Content-Disposition", "attachment; filename=" + strFileName);
+				// the [fileName] name instead of [download]!
+				Response.AddHeader("Content-Disposition", "attachment; filename=" + fileName);
 
-				long lngFileLength = oStream.Length;
+				long fileLength = stream.Length;
 
 				// Notify user (client) the total file length
-				Response.AddHeader("Content-Length", lngFileLength.ToString());
+				Response.AddHeader("Content-Length", fileLength.ToString());
 				// **************************************************
 
 				// Total bytes that should be read
-				long lngDataToRead = lngFileLength;
+				long dataToRead = fileLength;
 
 				// Read the bytes of file
-				while (lngDataToRead > 0)
+				while (dataToRead > 0)
 				{
 					// The below code is just for testing! So we commented it!
 					//System.Threading.Thread.Sleep(1000);
@@ -830,32 +862,32 @@
 					if (Response.IsClientConnected)
 					{
 						// 8KB
-						int intBufferSize = 8 * 1024;
+						int bufferSize = 8 * 1024;
 
 						// Create buffer for reading [intBufferSize] bytes from file
-						byte[] bytBuffers =
-							new System.Byte[intBufferSize];
+						byte[] buffers =
+							new System.Byte[bufferSize];
 
 						// Read the data and put it in the buffer.
-						int intTheBytesThatReallyHasBeenReadFromTheStream =
-							oStream.Read(buffer: bytBuffers, offset: 0, count: intBufferSize);
+						int theBytesThatReallyHasBeenReadFromTheStream =
+							stream.Read(buffer: buffers, offset: 0, count: bufferSize);
 
 						// Write the data from buffer to the current output stream.
 						Response.OutputStream.Write
-							(buffer: bytBuffers, offset: 0,
-							count: intTheBytesThatReallyHasBeenReadFromTheStream);
+							(buffer: buffers, offset: 0,
+							count: theBytesThatReallyHasBeenReadFromTheStream);
 
 						// Flush (Send) the data to output
 						// (Don't buffer in server's RAM!)
 						Response.Flush();
 
-						lngDataToRead =
-							lngDataToRead - intTheBytesThatReallyHasBeenReadFromTheStream;
+						dataToRead =
+							dataToRead - theBytesThatReallyHasBeenReadFromTheStream;
 					}
 					else
 					{
 						// Prevent infinite loop if user disconnected!
-						lngDataToRead = -1;
+						dataToRead = -1;
 					}
 				}
 			}
@@ -864,11 +896,11 @@
 			}
 			finally
 			{
-				if (oStream != null)
+				if (stream != null)
 				{
 					//oStream.Close();
-					oStream.Dispose();
-					oStream = null;
+					stream.Dispose();
+					stream = null;
 				}
 
 				Response.Close();
