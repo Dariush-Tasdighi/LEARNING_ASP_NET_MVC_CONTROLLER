@@ -153,7 +153,7 @@
 		// **************************************************
 		public string Learn1110()
 		{
-			return ("Hello, World!");
+			return "Hello, World!";
 		}
 
 		/// <summary>
@@ -161,12 +161,12 @@
 		/// </summary>
 		public System.Web.Mvc.ContentResult Learn1120()
 		{
-			return (Content("Hello, World!"));
+			return Content("Hello, World!");
 		}
 
 		public System.Web.Mvc.ActionResult Learn1130()
 		{
-			return (Content("Hello, World!"));
+			return Content("Hello, World!");
 		}
 		// **************************************************
 		// **************************************************
@@ -177,7 +177,7 @@
 		// **************************************************
 		public System.Web.Mvc.ContentResult Learn1140()
 		{
-			return (Content("<b>Hello, World!</b>"));
+			return Content("<b>Hello, World!</b>");
 		}
 
 		public System.Web.Mvc.ContentResult Learn1150()
@@ -186,7 +186,7 @@
 			string content =
 				Server.HtmlEncode("<b>Hello, World!</b>");
 
-			return (Content(content));
+			return Content(content);
 		}
 		// **************************************************
 		// **************************************************
@@ -207,26 +207,26 @@
 					// /Old Solution
 
 					// New Solution (1)
-					//return (RedirectToAction("Action1"));
+					//return Redirect(url: "~/Home/Action1");
 					// /New Solution (1)
 
 					// New Solution (2)
-					return (RedirectToAction(actionName: "Action1"));
+					return RedirectToAction(actionName: "Action1");
 					// /New Solution (2)
 				}
 
 				case 2:
 				{
 					// ی در همين کنترلر برويم Action اگر بخواهيم به
-					//return (RedirectToAction(actionName: "Action2"));
+					//return RedirectToAction(actionName: "Action2");
 
 					// Solution (1)
 					// ی در کنترلر ديگری برويم Action اگر بخواهيم به
-					//return (RedirectToAction(actionName: "Action2", controllerName: "Home"));
+					//return RedirectToAction(actionName: "Action2", controllerName: "Home");
 					// /Solution (1)
 
 					// Solution (2)
-					return (RedirectToAction(controllerName: "Home", actionName: "Action2"));
+					return RedirectToAction(controllerName: "Home", actionName: "Action2");
 					// /Solution (2)
 				}
 
@@ -234,7 +234,7 @@
 				{
 					string content = "Id value is not valid!";
 
-					return (Content(content));
+					return Content(content);
 				}
 			}
 		}
@@ -243,14 +243,14 @@
 		{
 			string content = "Action (1)";
 
-			return (Content(content));
+			return Content(content);
 		}
 
 		public System.Web.Mvc.ContentResult Action2()
 		{
 			string content = "Action (2)";
 
-			return (Content(content));
+			return Content(content);
 		}
 
 		/// <summary>
@@ -258,7 +258,7 @@
 		/// </summary>
 		//public System.Web.Mvc.ActionResult Edit(int id)
 		//{
-		//	return (Content("We display the edit page!"));
+		//	return Content("We display the edit page!");
 		//}
 
 		public System.Web.Mvc.ActionResult Edit(int? id)
@@ -267,10 +267,10 @@
 			//if (!id.HasValue)
 			if (id.HasValue == false)
 			{
-				return (Content("You should specify id value!"));
+				return Content("You should specify id value!");
 			}
 
-			return (Content("We display the edit page!"));
+			return Content("We display the edit page!");
 		}
 		// **************************************************
 		// **************************************************
@@ -281,14 +281,28 @@
 		// **************************************************
 		public System.Web.Mvc.ContentResult Action3(int firstNumber, int secondNumber)
 		{
+			// Solution (1)
+			//string result =
+			//	"First Number: " + firstNumber + ", Second Number: " + secondNumber;
+			// /Solution (1)
+
+			// Solution (2)
 			//string result =
 			//	string.Format("Frist Number: {0}, Second Number: {1}",
 			//	firstNumber, secondNumber);
+			// /Solution (2)
 
+			// Solution (3)
+			//string result =
+			//	$"Frist Number: {firstNumber}, Second Number: {secondNumber}";
+			// /Solution (3)
+
+			// Solution (4)
 			string result =
-				$"Frist Number: { firstNumber }, Second Number: { secondNumber}";
+				$"Frist Number: { firstNumber }, Second Number: { secondNumber }";
+			// /Solution (4)
 
-			return (Content(result));
+			return Content(result);
 		}
 
 		public System.Web.Mvc.RedirectToRouteResult Learn1170()
@@ -299,17 +313,17 @@
 			//someClass.FirstNumber = 10;
 			//someClass.SecondNumber = 20;
 
-			//return (RedirectToAction(actionName: "Action3", routeValues: someClass));
+			//return RedirectToAction(actionName: "Action3", routeValues: someClass);
 			// /Solution (1)
 
 			// Solution (2)
-			//return (RedirectToAction(actionName: "Action3",
-			//	routeValues: new { FirstNumber = 10, SecondNumber = 20 }));
+			//return RedirectToAction(actionName: "Action3",
+			//	routeValues: new { FirstNumber = 10, SecondNumber = 20 });
 			// /Solution (2)
 
 			// Solution (3)
-			return (RedirectToAction(actionName: "Action3",
-				routeValues: new { SecondNumber = 20, FirstNumber = 10 }));
+			return RedirectToAction(actionName: "Action3",
+				routeValues: new { SecondNumber = 20, FirstNumber = 10 });
 			// /Solution (3)
 		}
 		// **************************************************
@@ -432,6 +446,15 @@
 		// **************************************************
 		// **************************************************
 		// **************************************************
+
+		// نکته بسیار مهم
+		// فقط و فقط به
+		// Action
+		// هایی که به صورت
+		// GET
+		// تعریف شده‌اند، امکان
+		// Redirect
+		// وجود دارد
 
 		// **************************************************
 		// **************************************************
