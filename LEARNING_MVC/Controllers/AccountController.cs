@@ -9,7 +9,7 @@
 		[System.Web.Mvc.HttpGet]
 		public System.Web.Mvc.ContentResult Login()
 		{
-			return (Content("Login..."));
+			return Content("Login...");
 		}
 	}
 }

@@ -109,7 +109,7 @@
 		/// http://localhost:30847/Home/Learn1090 -> number = 110
 		/// http://localhost:30847/Home/Learn1090/200 -> number = 110
 		/// http://localhost:30847/Home/Learn1090?number=200 -> number = 200
-		/// http://localhost:30847/Home/Learn1090?number=Something -> Error!
+		/// http://localhost:30847/Home/Learn1090?number=Something -> number = 110
 		/// </summary>
 		public void Learn1090(int number = 110)
 		{
@@ -203,7 +203,7 @@
 				{
 					// Old Solution
 					//Response.Redirect("~/Home/Action1", endResponse: false);
-					//return (null);
+					//return null);
 					// /Old Solution
 
 					// New Solution (1)
@@ -337,7 +337,7 @@
 		{
 			TempData["MyNumber"] = 10;
 
-			return (RedirectToAction(actionName: "Action4"));
+			return RedirectToAction(actionName: "Action4");
 		}
 
 		public System.Web.Mvc.ContentResult Action4()
@@ -362,7 +362,7 @@
 					$"My Name is { myName }";
 			}
 
-			return (Content(result));
+			return Content(result);
 		}
 
 		public System.Web.Mvc.ContentResult Learn1190()
@@ -377,7 +377,7 @@
 					(int)TempData["MyNumber"] + 1;
 			}
 
-			return (Content(TempData["MyNumber"].ToString()));
+			return Content(TempData["MyNumber"].ToString());
 		}
 
 		public System.Web.Mvc.ContentResult Learn1200()
@@ -395,7 +395,7 @@
 					(int)TempData["MyNumber"] + 1;
 			}
 
-			return (Content(TempData["MyNumber"].ToString()));
+			return Content(TempData["MyNumber"].ToString());
 		}
 
 		public System.Web.Mvc.ContentResult Learn1210()
@@ -413,7 +413,7 @@
 			//TempData.Keep();
 			TempData.Keep("MyNumber");
 
-			return (Content(TempData["MyNumber"].ToString()));
+			return Content(TempData["MyNumber"].ToString());
 		}
 		// **************************************************
 		// **************************************************
@@ -427,13 +427,13 @@
 		[System.Web.Mvc.HttpGet]
 		public System.Web.Mvc.ContentResult Learn1220()
 		{
-			return (Content("Hello, World!"));
+			return Content("Hello, World!");
 		}
 
 		[System.Web.Mvc.HttpPost]
 		public System.Web.Mvc.ContentResult Learn1230()
 		{
-			return (Content("Hello, World!"));
+			return Content("Hello, World!");
 		}
 
 		// نوشتن هر دو بی معنی است
@@ -441,20 +441,21 @@
 		[System.Web.Mvc.HttpPost]
 		public System.Web.Mvc.ContentResult Learn1240()
 		{
-			return (Content("Hello, World!"));
+			return Content("Hello, World!");
+		}
+
+		/// <summary>
+		/// Without Attribute, this action will response with two action methods!
+		/// GET, POST
+		/// </summary>
+		/// <returns></returns>
+		public System.Web.Mvc.ContentResult Learn1245()
+		{
+			return Content("Hello, World!");
 		}
 		// **************************************************
 		// **************************************************
 		// **************************************************
-
-		// نکته بسیار مهم
-		// فقط و فقط به
-		// Action
-		// هایی که به صورت
-		// GET
-		// تعریف شده‌اند، امکان
-		// Redirect
-		// وجود دارد
 
 		// **************************************************
 		// **************************************************
@@ -465,7 +466,7 @@
 		//[System.Web.Mvc.HttpGet]
 		//public System.Web.Mvc.ActionResult Learn1250()
 		//{
-		//	return (Content("Hello, World!"));
+		//	return Content("Hello, World!");
 		//}
 
 		/// <summary>
@@ -474,7 +475,7 @@
 		//[System.Web.Mvc.HttpGet]
 		//public System.Web.Mvc.ActionResult Learn1250()
 		//{
-		//	return (Content("Hello, World!"));
+		//	return Content("Hello, World!");
 		//}
 		// **************************************************
 		// **************************************************
@@ -489,7 +490,7 @@
 		[System.Web.Mvc.HttpGet]
 		public System.Web.Mvc.ActionResult Learn1260()
 		{
-			return (Content("Hello, World!"));
+			return Content("Hello, World!");
 		}
 
 		/// <summary>
@@ -498,7 +499,7 @@
 		[System.Web.Mvc.HttpGet]
 		public System.Web.Mvc.ActionResult Learn1260(string name)
 		{
-			return (Content("Hello, World!"));
+			return Content("Hello, World!");
 		}
 		// **************************************************
 		// **************************************************
@@ -510,13 +511,13 @@
 		[System.Web.Mvc.HttpGet]
 		public System.Web.Mvc.ActionResult Learn1270()
 		{
-			return (Content("[GET] Hello, World!"));
+			return Content("[GET] Hello, World!");
 		}
 
 		[System.Web.Mvc.HttpPost]
 		public System.Web.Mvc.ActionResult Learn1270(string name)
 		{
-			return (Content("[POST] Hello, World!"));
+			return Content("[POST] Hello, World!");
 		}
 		// **************************************************
 		// **************************************************
@@ -528,21 +529,21 @@
 		[System.Web.Mvc.HttpGet]
 		public System.Web.Mvc.ActionResult Learn1280()
 		{
-			return (Content("[GET] Hello, World!"));
+			return Content("[GET] Hello, World!");
 		}
 
 		[System.Web.Mvc.HttpGet]
 		[System.Web.Mvc.ActionName(name: "Learn1280_AliasName")]
 		public System.Web.Mvc.ActionResult Learn1280(string name)
 		{
-			return (Content("[GET] Hello, World!"));
+			return Content("[GET] Hello, World!");
 		}
 		// **************************************************
 		// **************************************************
 		// **************************************************
 
 		// **************************************************
-		// Note: باشد GET نمود که RedirectToAction ی Action در صورتی می‌توان به
+		// Note: باشد GET نمود که پذیرای Redirect ی Action در صورتی می‌توان به
 		// **************************************************
 
 		// **************************************************
@@ -551,16 +552,16 @@
 		[System.Web.Mvc.HttpGet]
 		public System.Web.Mvc.RedirectToRouteResult Learn1290()
 		{
-			return (RedirectToAction(actionName: "Action1"));
+			return RedirectToAction(actionName: "Action1");
 		}
 
 		[System.Web.Mvc.HttpGet]
 		public System.Web.Mvc.RedirectResult Learn1300()
 		{
-			return (RedirectPermanent(url: "Action1"));
-			//return (RedirectPermanent(url: "Home/Action1"));
-			//return (RedirectPermanent(url: "~/Home/Action1"));
-			//return (RedirectPermanent(url: "http://www.CNN.com"));
+			return RedirectPermanent(url: "Action1");
+			//return RedirectPermanent(url: "Home/Action1");
+			//return RedirectPermanent(url: "~/Home/Action1");
+			//return RedirectPermanent(url: "http://www.CNN.com");
 		}
 		// **************************************************
 		// **************************************************
@@ -572,13 +573,13 @@
 		[System.Web.Mvc.HttpGet]
 		public System.Web.Mvc.RedirectResult AboutUs()
 		{
-			return (RedirectPermanent(url: "About"));
+			return RedirectPermanent(url: "About");
 		}
 
 		[System.Web.Mvc.HttpGet]
 		public System.Web.Mvc.ContentResult About()
 		{
-			return (Content("Hi! I'm Dariush Tasdighi!"));
+			return Content("Hi! I'm Dariush Tasdighi!");
 		}
 		// **************************************************
 		// **************************************************
@@ -593,7 +594,7 @@
 			string content =
 				System.DateTime.Now.ToString("yyyy/MM/dd - HH:mm:ss");
 
-			return (Content(content));
+			return Content(content);
 		}
 
 		/// <remarks>
@@ -606,7 +607,7 @@
 			string content =
 				System.DateTime.Now.ToString("yyyy/MM/dd - HH:mm:ss");
 
-			return (Content(content));
+			return Content(content);
 		}
 
 		[System.Web.Mvc.HttpGet]
@@ -617,17 +618,17 @@
 			{
 				case 1:
 				{
-					return (Content("Hello World (1)!"));
+					return Content("Hello World (1)!");
 				}
 
 				case 2:
 				{
-					return (Content("Hello World (2)!"));
+					return Content("Hello World (2)!");
 				}
 
 				default:
 				{
-					return (Content("Hello, World!"));
+					return Content("Hello, World!");
 				}
 			}
 		}
@@ -639,7 +640,7 @@
 			string content =
 				System.DateTime.Now.ToString("yyyy/MM/dd - HH:mm:ss");
 
-			return (Content(content));
+			return Content(content);
 		}
 
 		/// <summary>
@@ -665,27 +666,27 @@
 		[System.Web.Mvc.HttpGet]
 		public System.Web.Mvc.ContentResult Learn1360()
 		{
-			return (Content("Hello, World!"));
+			return Content("Hello, World!");
 		}
 
 		[System.Web.Mvc.HttpGet]
 		[System.Web.Mvc.Authorize]
 		public System.Web.Mvc.ContentResult Learn1370()
 		{
-			return (Content("Hello, World!"));
+			return Content("Hello, World!");
 		}
 
 		[System.Web.Mvc.HttpGet]
 		[System.Web.Mvc.Authorize(Roles = "Supervisor,Manager")]
 		public System.Web.Mvc.ContentResult Learn1380()
 		{
-			return (Content("Hello, World!"));
+			return Content("Hello, World!");
 		}
 
 		[System.Web.Mvc.AllowAnonymous]
 		public System.Web.Mvc.ContentResult Learn1390()
 		{
-			return (Content("Hello, World!"));
+			return Content("Hello, World!");
 		}
 		// **************************************************
 		// **************************************************
@@ -698,44 +699,45 @@
 		public string Learn1400()
 		{
 			string result =
-				"{\"FullName\":\"Dariush Tasdighi\",\"Age\":45}";
+				"{\"FullName\":\"Dariush Tasdighi\",\"Age\":47}";
 
 			// Wrong Usage!
 			//string result =
-			//	"{'FullName':'Dariush Tasdighi','Age':45}";
+			//	"{'FullName':'Dariush Tasdighi','Age':47}";
 
-			return (result);
+			return result;
 		}
 
 		[System.Web.Mvc.HttpGet]
 		public System.Web.Mvc.ContentResult Learn1405()
 		{
 			string result =
-				"{\"FullName\":\"Dariush Tasdighi\",\"Age\":45}";
+				"{\"FullName\":\"Dariush Tasdighi\",\"Age\":47}";
 
-			return (Content(result));
+			return Content(result);
 		}
 
 		[System.Web.Mvc.HttpGet]
 		public System.Web.Mvc.JsonResult Learn1410()
 		{
-			Models.Person person = new Models.Person();
+			Models.Person person = new Models.Person
+			{
+				Age = 47,
+				FullName = "Dariush Tasdighi",
+			};
 
-			person.Age = 45;
-			person.FullName = "Dariush Tasdighi";
-
-			return (Json(data: person,
-				behavior: System.Web.Mvc.JsonRequestBehavior.AllowGet));
+			return Json(data: person,
+				behavior: System.Web.Mvc.JsonRequestBehavior.AllowGet);
 		}
 
 		[System.Web.Mvc.HttpGet]
 		public System.Web.Mvc.JsonResult Learn1420()
 		{
 			var result =
-				new { FullName = "Dariush Tasdighi", Age = 40 };
+				new { FullName = "Dariush Tasdighi", Age = 47 };
 
-			return (Json(data: result,
-				behavior: System.Web.Mvc.JsonRequestBehavior.AllowGet));
+			return Json(data: result,
+				behavior: System.Web.Mvc.JsonRequestBehavior.AllowGet);
 		}
 
 		[System.Web.Mvc.HttpGet]
@@ -747,13 +749,13 @@
 			for (int index = 1; index <= 5; index++)
 			{
 				var entity =
-					new { FullName = $"Dariush Tasdighi {index}", Age = 40 + index };
+					new { FullName = $"Full Name {index}", Age = 40 + index };
 
 				result.Add(entity);
 			}
 
-			return (Json(data: result,
-				behavior: System.Web.Mvc.JsonRequestBehavior.AllowGet));
+			return Json(data: result,
+				behavior: System.Web.Mvc.JsonRequestBehavior.AllowGet);
 		}
 		// **************************************************
 		// **************************************************
@@ -774,7 +776,7 @@
 				Server.MapPath(rootRelativePathName);
 
 			// Content Type == Mime Type
-			return (File(fileName: pathName, contentType: "text/html"));
+			return File(fileName: pathName, contentType: "text/html");
 		}
 
 		[System.Web.Mvc.HttpGet]
@@ -788,7 +790,7 @@
 			string pathName =
 				Server.MapPath(rootRelativePathName);
 
-			return (File(fileName: pathName, contentType: "image/jpeg"));
+			return File(fileName: pathName, contentType: "image/jpeg");
 		}
 
 		[System.Web.Mvc.HttpGet]
@@ -802,8 +804,8 @@
 			string strPathName =
 				Server.MapPath(rootRelativePathName);
 
-			return (File(fileName: strPathName, contentType: "googooli/magooli"));
-			//return (File(fileName: strPathName, contentType: "application/octet-stream"));
+			return File(fileName: strPathName, contentType: "googooli/magooli");
+			//return File(fileName: strPathName, contentType: "application/octet-stream");
 		}
 
 		[System.Web.Mvc.HttpGet]
@@ -817,7 +819,7 @@
 			string pathName =
 				Server.MapPath(rootRelativePathName);
 
-			return (File(fileName: pathName, contentType: "googooli/magooli", fileDownloadName: "Dariush.jpg"));
+			return File(fileName: pathName, contentType: "googooli/magooli", fileDownloadName: "Dariush.jpg");
 		}
 
 		/// <summary>

@@ -88,6 +88,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\Readme.txt" />
     <Content Include="Content\Images\Dariush.jpg" />
     <Content Include="Global.asax" />
     <Content Include="App_Data\Images\Dariush.jpg" />
