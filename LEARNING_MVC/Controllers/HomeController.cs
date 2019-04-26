@@ -203,7 +203,7 @@
 				{
 					// Old Solution
 					//Response.Redirect("~/Home/Action1", endResponse: false);
-					//return null);
+					//return null;
 					// /Old Solution
 
 					// New Solution (1)
@@ -317,14 +317,24 @@
 			// /Solution (1)
 
 			// Solution (2)
-			//return RedirectToAction(actionName: "Action3",
-			//	routeValues: new { FirstNumber = 10, SecondNumber = 20 });
+			//Models.SomeClass someClass = new Models.SomeClass
+			//{
+			//	FirstNumber = 10,
+			//	SecondNumber = 20,
+			//};
+
+			//return RedirectToAction(actionName: "Action3", routeValues: someClass);
 			// /Solution (2)
 
 			// Solution (3)
+			//return RedirectToAction(actionName: "Action3",
+			//	routeValues: new { FirstNumber = 10, SecondNumber = 20 });
+			// /Solution (3)
+
+			// Solution (4)
 			return RedirectToAction(actionName: "Action3",
 				routeValues: new { SecondNumber = 20, FirstNumber = 10 });
-			// /Solution (3)
+			// /Solution (4)
 		}
 		// **************************************************
 		// **************************************************
@@ -351,6 +361,8 @@
 
 				result =
 					$"My Number is { myNumber }";
+
+				return Content(result);
 			}
 
 			if (TempData["MyName"] != null)
@@ -360,7 +372,11 @@
 
 				result =
 					$"My Name is { myName }";
+
+				return Content(result);
 			}
+
+			result = "I do not have any passed parameter!";
 
 			return Content(result);
 		}
