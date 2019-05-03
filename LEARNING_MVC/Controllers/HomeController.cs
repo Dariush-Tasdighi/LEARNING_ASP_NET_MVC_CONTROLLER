@@ -480,7 +480,7 @@
 		/// Compile Error!
 		/// </summary>
 		//[System.Web.Mvc.HttpGet]
-		//public System.Web.Mvc.ActionResult Learn1250()
+		//public System.Web.Mvc.ContentResult Learn1250()
 		//{
 		//	return Content("Hello, World!");
 		//}
@@ -489,7 +489,7 @@
 		/// Compile Error!
 		/// </summary>
 		//[System.Web.Mvc.HttpGet]
-		//public System.Web.Mvc.ActionResult Learn1250()
+		//public System.Web.Mvc.ContentResult Learn1250()
 		//{
 		//	return Content("Hello, World!");
 		//}
@@ -504,7 +504,7 @@
 		/// MVC Error!
 		/// </summary>
 		[System.Web.Mvc.HttpGet]
-		public System.Web.Mvc.ActionResult Learn1260()
+		public System.Web.Mvc.ContentResult Learn1260()
 		{
 			return Content("Hello, World!");
 		}
@@ -513,7 +513,7 @@
 		/// MVC Error!
 		/// </summary>
 		[System.Web.Mvc.HttpGet]
-		public System.Web.Mvc.ActionResult Learn1260(string name)
+		public System.Web.Mvc.ContentResult Learn1260(string name)
 		{
 			return Content("Hello, World!");
 		}
@@ -525,13 +525,13 @@
 		// **************************************************
 		// **************************************************
 		[System.Web.Mvc.HttpGet]
-		public System.Web.Mvc.ActionResult Learn1270()
+		public System.Web.Mvc.ContentResult Learn1270()
 		{
 			return Content("[GET] Hello, World!");
 		}
 
 		[System.Web.Mvc.HttpPost]
-		public System.Web.Mvc.ActionResult Learn1270(string name)
+		public System.Web.Mvc.ContentResult Learn1270(string name)
 		{
 			return Content("[POST] Hello, World!");
 		}
@@ -543,14 +543,14 @@
 		// **************************************************
 		// **************************************************
 		[System.Web.Mvc.HttpGet]
-		public System.Web.Mvc.ActionResult Learn1280()
+		public System.Web.Mvc.ContentResult Learn1280()
 		{
 			return Content("[GET] Hello, World!");
 		}
 
 		[System.Web.Mvc.HttpGet]
 		[System.Web.Mvc.ActionName(name: "Learn1280_AliasName")]
-		public System.Web.Mvc.ActionResult Learn1280(string name)
+		public System.Web.Mvc.ContentResult Learn1280(string name)
 		{
 			return Content("[GET] Hello, World!");
 		}
@@ -577,7 +577,7 @@
 			return RedirectPermanent(url: "Action1");
 			//return RedirectPermanent(url: "Home/Action1");
 			//return RedirectPermanent(url: "~/Home/Action1");
-			//return RedirectPermanent(url: "http://www.CNN.com");
+			//return RedirectPermanent(url: "https://www.CNN.com");
 		}
 		// **************************************************
 		// **************************************************
@@ -779,7 +779,7 @@
 
 		// در تمام پروژه‌هایی که می‌نویسید
 		// خصوصا پروژه‌های وب، به هیچ عنوان
-		// از آدرس فیزیک استفاده نکنید
+		// از آدرس فیزیکی نباید استفاده کنیم
 		// C:\INETPUT\WWWROOT\...
 
 		// **************************************************
