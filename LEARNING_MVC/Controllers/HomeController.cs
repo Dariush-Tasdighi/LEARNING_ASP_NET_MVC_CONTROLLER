@@ -32,7 +32,8 @@
 		/// http://localhost:30847/Home/Learn1020 -> Error!
 		/// http://localhost:30847/Home/Learn1020/15 -> Error!
 		/// http://localhost:30847/Home/Learn1020?number=15
-		/// http://localhost:30847/HOME/LEARN1020?NUMBER=15 -> Note: Url (Controller and Action name) and the input parameter name(s) are not Case Sensitive!
+		/// http://localhost:30847/Home/Learn1020?number=Something -> Error!
+		/// http://LOCALHOST:30847/HOME/LEARN1020?NUMBER=15 -> Note: Url (Domain and Controller and Action name) and the input parameter(s) name are not Case Sensitive!
 		/// </summary>
 		public void Learn1020(int number)
 		{
@@ -211,8 +212,14 @@
 					// /New Solution (1)
 
 					// New Solution (2)
-					return RedirectToAction(actionName: "Action1");
+					//return RedirectToAction(actionName: "Action1");
 					// /New Solution (2)
+
+					// New Solution (3)
+					//return RedirectToAction(actionName: "Action11");
+					//return RedirectToAction(actionName: nameof(Action11));
+					return RedirectToAction(actionName: nameof(Action1));
+					// /New Solution (3)
 				}
 
 				case 2:
@@ -226,8 +233,12 @@
 					// /Solution (1)
 
 					// Solution (2)
-					return RedirectToAction(controllerName: "Home", actionName: "Action2");
+					//return RedirectToAction(controllerName: "Home", actionName: "Action2");
 					// /Solution (2)
+
+					// Solution (3)
+					return RedirectToAction(actionName: nameof(Action2));
+					// /Solution (3)
 				}
 
 				default:
@@ -313,7 +324,7 @@
 			//someClass.FirstNumber = 10;
 			//someClass.SecondNumber = 20;
 
-			//return RedirectToAction(actionName: "Action3", routeValues: someClass);
+			//return RedirectToAction(actionName: nameof(Action3), routeValues: someClass);
 			// /Solution (1)
 
 			// Solution (2)
@@ -323,16 +334,16 @@
 			//	SecondNumber = 20,
 			//};
 
-			//return RedirectToAction(actionName: "Action3", routeValues: someClass);
+			//return RedirectToAction(actionName: nameof(Action3), routeValues: someClass);
 			// /Solution (2)
 
 			// Solution (3)
-			//return RedirectToAction(actionName: "Action3",
+			//return RedirectToAction(actionName: nameof(Action3),
 			//	routeValues: new { FirstNumber = 10, SecondNumber = 20 });
 			// /Solution (3)
 
 			// Solution (4)
-			return RedirectToAction(actionName: "Action3",
+			return RedirectToAction(actionName: nameof(Action3),
 				routeValues: new { SecondNumber = 20, FirstNumber = 10 });
 			// /Solution (4)
 		}
@@ -347,7 +358,7 @@
 		{
 			TempData["MyNumber"] = 10;
 
-			return RedirectToAction(actionName: "Action4");
+			return RedirectToAction(actionName: nameof(Action4));
 		}
 
 		public System.Web.Mvc.ContentResult Action4()

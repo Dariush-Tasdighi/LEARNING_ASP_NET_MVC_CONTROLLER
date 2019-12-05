@@ -184,3 +184,62 @@ myCircle.Draw(10, 20, radius: 30, 5); // Compile Error!
 myCircle.Draw(10, 20, width: 5, radius: 30);
 
 --------------------------------------------------
+
+آدرس‌دهی نسبی، نسبت به جایی که هستیم
+آدرس‌دهی فیزیکی
+
+آدرس‌دهی نسبی، نسبت به
+Root پروژه
+
+				[C:]
+
+	[Users]
+
+	[MySite]
+
+	[N]			[Folder]: M
+
+	X			Y
+
+	در داخل فایل
+	X
+	هستیم، و می‌خواهیم نشانی فایل
+	Y
+	را مشخص کنیم
+
+	../M/Y
+	C:\Users\MySite\M\Y
+	~/M/Y
+
+--------------------------------------------------
+
+						...
+						[MySite]
+
+			[Files]
+
+			X.zip
+
+http://www.MySite.ir/Files/X.zip
+
+						...
+						[MySite]
+
+			[App_Data]
+
+			[Files]
+
+			X.zip
+
+http://www.MySite.ir/App_Data/Files/X.zip
+
+						...
+						[MySite]
+
+			[App_Data]				Download.php | Download.asp | Download.aspx | Download.cgi | Home/Download
+
+			[Files]
+
+			X.zip
+
+http://www.MySite.ir/Home/Download/1123
