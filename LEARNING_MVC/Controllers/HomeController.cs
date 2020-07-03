@@ -22,6 +22,7 @@
 		/// http://localhost:30847/Home/Learn1010?id=15
 		/// http://localhost:30847/Home/Learn1010/15 // شیک تر است
 		/// http://localhost:30847/Home/Learn1010/Something -> Error!
+		/// http://localhost:30847/Home/Learn1010?id=Something -> Error!
 		/// </summary>
 		public void Learn1010(int id)
 		{
@@ -33,7 +34,7 @@
 		/// http://localhost:30847/Home/Learn1020/15 -> Error!
 		/// http://localhost:30847/Home/Learn1020?number=15
 		/// http://localhost:30847/Home/Learn1020?number=Something -> Error!
-		/// http://LOCALHOST:30847/HOME/LEARN1020?NUMBER=15 -> Note: Url (Domain and Controller and Action name) and the input parameter(s) name are not Case Sensitive!
+		/// http://LOCALHOST:30847/HOME/LEARN1020?NUMBER=15 -> Note: Url (Domain and Area and Controller and Action name) and the input parameter(s) name are not Case Sensitive!
 		/// </summary>
 		public void Learn1020(int number)
 		{
@@ -107,6 +108,8 @@
 		}
 
 		/// <summary>
+		/// Optional Input Parameter(s)
+		///
 		/// http://localhost:30847/Home/Learn1090 -> number = 110
 		/// http://localhost:30847/Home/Learn1090/200 -> number = 110
 		/// http://localhost:30847/Home/Learn1090?number=200 -> number = 200
@@ -195,6 +198,8 @@
 
 		// **************************************************
 		// **************************************************
+		// **************************************************
+		// سوار شده است ASP.NET Web Form روی ASP.NET MVC در واقع
 		// **************************************************
 		public System.Web.Mvc.ActionResult Learn1160(int id)
 		{
