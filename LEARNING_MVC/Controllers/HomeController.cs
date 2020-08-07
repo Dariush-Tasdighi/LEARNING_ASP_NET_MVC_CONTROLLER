@@ -584,13 +584,13 @@
 		[System.Web.Mvc.HttpGet]
 		public System.Web.Mvc.RedirectToRouteResult Learn1290()
 		{
-			return RedirectToAction(actionName: "Action1");
+			return RedirectToAction(actionName: nameof(Action1));
 		}
 
 		[System.Web.Mvc.HttpGet]
 		public System.Web.Mvc.RedirectResult Learn1300()
 		{
-			return RedirectPermanent(url: "Action1");
+			return RedirectPermanent(url: nameof(Action1));
 			//return RedirectPermanent(url: "Home/Action1");
 			//return RedirectPermanent(url: "~/Home/Action1");
 			//return RedirectPermanent(url: "https://www.CNN.com");
@@ -605,7 +605,7 @@
 		[System.Web.Mvc.HttpGet]
 		public System.Web.Mvc.RedirectResult AboutUs()
 		{
-			return RedirectPermanent(url: "About");
+			return RedirectPermanent(url: nameof(Action1));
 		}
 
 		[System.Web.Mvc.HttpGet]
@@ -682,7 +682,7 @@
 		public void Learn1350()
 		{
 			string url =
-				Url.Action(actionName: "Learn1340");
+				Url.Action(actionName: nameof(Learn1340));
 
 			Response.RemoveOutputCacheItem(url);
 		}
