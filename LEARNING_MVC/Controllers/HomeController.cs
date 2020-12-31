@@ -242,8 +242,16 @@
 					// /Solution (2)
 
 					// Solution (3)
-					return RedirectToAction(actionName: nameof(Action2));
+					//return RedirectToAction(actionName: nameof(Action2));
 					// /Solution (3)
+
+					// Solution (4)
+					string controllerName =
+						nameof(HomeController).Replace("Controller", string.Empty);
+
+					return RedirectToAction
+						(controllerName: controllerName, actionName: nameof(Action2));
+					// /Solution (4)
 				}
 
 				default:
@@ -333,6 +341,16 @@
 			// /Solution (1)
 
 			// Solution (2)
+			//Models.SomeClass someClass = new Models.SomeClass()
+			//{
+			//	FirstNumber = 10,
+			//	SecondNumber = 20
+			//};
+
+			//return RedirectToAction(actionName: nameof(Action3), routeValues: someClass);
+			// /Solution (2)
+
+			// Solution (3)
 			//Models.SomeClass someClass = new Models.SomeClass
 			//{
 			//	FirstNumber = 10,
@@ -340,17 +358,17 @@
 			//};
 
 			//return RedirectToAction(actionName: nameof(Action3), routeValues: someClass);
-			// /Solution (2)
-
-			// Solution (3)
-			//return RedirectToAction(actionName: nameof(Action3),
-			//	routeValues: new { FirstNumber = 10, SecondNumber = 20 });
 			// /Solution (3)
 
 			// Solution (4)
+			//return RedirectToAction(actionName: nameof(Action3),
+			//	routeValues: new { FirstNumber = 10, SecondNumber = 20 });
+			// /Solution (4)
+
+			// Solution (5)
 			return RedirectToAction(actionName: nameof(Action3),
 				routeValues: new { SecondNumber = 20, FirstNumber = 10 });
-			// /Solution (4)
+			// /Solution (5)
 		}
 		// **************************************************
 		// **************************************************
@@ -401,7 +419,7 @@
 		{
 			if (TempData["MyNumber"] == null)
 			{
-				TempData["MyNumber"] = 10;
+				TempData["MyNumber"] = 1;
 			}
 			else
 			{
@@ -416,7 +434,7 @@
 		{
 			if (TempData["MyNumber"] == null)
 			{
-				TempData["MyNumber"] = 10;
+				TempData["MyNumber"] = 1;
 
 				//TempData.Keep();
 				TempData.Keep("MyNumber");
@@ -434,7 +452,7 @@
 		{
 			if (TempData["MyNumber"] == null)
 			{
-				TempData["MyNumber"] = 10;
+				TempData["MyNumber"] = 1;
 			}
 			else
 			{
@@ -676,7 +694,7 @@
 		}
 
 		/// <summary>
-		/// Tanx To Mr. Hossein Shojaee
+		/// Thanks To Mr. Hossein Shojaee
 		/// </summary>
 		[System.Web.Mvc.HttpGet]
 		public void Learn1350()
@@ -695,6 +713,8 @@
 		// **************************************************
 		// AZMan
 		// Identity
+		// Dtx Security
+		// Identity Server
 		[System.Web.Mvc.HttpGet]
 		public System.Web.Mvc.ContentResult Learn1360()
 		{
@@ -727,15 +747,22 @@
 		// **************************************************
 		// **************************************************
 		// **************************************************
+		// COM
+		// DCOM
+		// COM+
+		// XML Web Service
+		// WCF
+		// Web API
+		// SignalR
 		[System.Web.Mvc.HttpGet]
 		public string Learn1400()
 		{
-			string result =
-				"{\"FullName\":\"Dariush Tasdighi\",\"Age\":47}";
-
 			// Wrong Usage!
 			//string result =
 			//	"{'FullName':'Dariush Tasdighi','Age':47}";
+
+			string result =
+				"{\"FullName\":\"Dariush Tasdighi\",\"Age\":47}";
 
 			return result;
 		}
